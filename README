@@ -1,0 +1,193 @@
+# iba-ai-automation-guard
+
+> **AI can now do all of this. Did anyone authorize it?**
+
+---
+
+## The Problem
+
+AI can now:
+
+- Write your content
+- Build your website
+- Handle your customer service
+- Create your product
+- Run your marketing
+
+Every one of these is an autonomous agent acting on your behalf.
+
+None of them have a pre-execution authorization gate.
+
+No declared scope. No hard limits. No kill threshold. No human principal signature. No audit chain.
+
+The agent does what it can do — not what you authorized it to do.
+
+---
+
+## The Five Gaps
+
+| Capability | What the agent can do | What you authorized |
+|-----------|----------------------|-------------------|
+| Write content | Any topic · Any platform · Any audience · Any claim | "Write a blog post about X" |
+| Build website | Any code · Any deployment · Any endpoint · Production push | "Build me a landing page" |
+| Customer service | Any response · Any commitment · Any refund · Any promise | "Handle support tickets" |
+| Create product | Any feature · Any dependency · Any external API · Any release | "Build this feature" |
+| Run marketing | Any channel · Any spend · Any audience · Any message | "Run our marketing" |
+
+The gap between what you said and what the agent can do is not a bug.
+
+**It is the architecture.**
+
+---
+
+## The IBA Layer
+
+A signed intent certificate closes the gap before the agent acts.
+
+### Content Writing
+```json
+{
+  "intent": "Write weekly blog posts on AI governance",
+  "scope": ["blog_write", "draft_publish"],
+  "forbidden": ["social_post", "email_send", "external_publish"],
+  "limits": {
+    "topics": "AI governance only",
+    "tone": "professional",
+    "kill_threshold": "any_claim_about_competitors"
+  },
+  "signature": "ed25519:..."
+}
+```
+
+### Website Building
+```json
+{
+  "intent": "Build landing page for product launch",
+  "scope": ["repo_read", "branch_write", "staging_deploy"],
+  "forbidden": ["production_deploy", "external_api_call", "payment_integration"],
+  "limits": {
+    "repository": "marketing-site only",
+    "kill_threshold": "any_production_touch"
+  },
+  "signature": "ed25519:..."
+}
+```
+
+### Customer Service
+```json
+{
+  "intent": "Handle tier-1 support tickets",
+  "scope": ["ticket_read", "ticket_respond", "kb_read"],
+  "forbidden": ["refund_issue", "account_modify", "escalation_bypass"],
+  "limits": {
+    "response_type": "information only",
+    "kill_threshold": "any_financial_commitment"
+  },
+  "signature": "ed25519:..."
+}
+```
+
+### Product Creation
+```json
+{
+  "intent": "Implement user authentication feature",
+  "scope": ["repo_read", "branch_write", "test_execute"],
+  "forbidden": ["production_deploy", "dependency_add", "secret_access"],
+  "limits": {
+    "repository": "auth-service only",
+    "kill_threshold": "any_external_api · any_production_touch"
+  },
+  "signature": "ed25519:..."
+}
+```
+
+### Marketing
+```json
+{
+  "intent": "Run paid social campaign for April launch",
+  "scope": ["campaign_create", "ad_publish", "analytics_read"],
+  "forbidden": ["budget_increase", "new_channel", "audience_expand"],
+  "limits": {
+    "budget_usd": 5000,
+    "channels": "LinkedIn · Twitter only",
+    "kill_threshold": "any_spend_above_5000"
+  },
+  "signature": "ed25519:..."
+}
+```
+
+---
+
+## Gate Logic
+
+```
+Certificate valid?              → PROCEED
+Action outside declared scope?  → BLOCK
+Hard limit exceeded?            → BLOCK
+Forbidden action attempted?     → BLOCK
+Kill threshold triggered?       → TERMINATE + LOG
+No certificate present?         → BLOCK
+```
+
+**No cert = No execution.**
+
+The agent cannot write outside its declared topic.
+The agent cannot deploy to production without a cert that permits it.
+The agent cannot issue a refund without a cert that declares it.
+The agent cannot spend above the declared limit.
+The agent cannot remove the gate that governs it.
+
+---
+
+## Live Demos
+
+**governinglayer.com/codeguard-html/**
+Code Guard — the product creation scenario live.
+They got the commit. They didn't get the cert.
+
+**governinglayer.com/seoguard-html/**
+SEO Guard — the content and marketing scenario live.
+SEO Machine promises zero humans. IBA Intent Bound Authorization ensures zero hallucinations.
+
+**governinglayer.com/selfimprove-html/**
+Self-Improve — the agent that cannot remove its own gate.
+An agent cannot modify the governance that constrains it.
+
+**ibacore.com/desktopwars-html/**
+Desktop Wars — all five capabilities governed simultaneously.
+One gate. Multiple agents. Every action validated before execution.
+
+---
+
+## Patent & Standards Record
+
+```
+Patent:   GB2603013.0 (Pending) · UK IPO · Filed February 5, 2026
+PCT:      150+ countries · Protected until August 2028
+IETF:     draft-williams-intent-token-00 · CONFIRMED LIVE
+          datatracker.ietf.org/doc/draft-williams-intent-token/
+NIST:     13 filings
+NCCoE:    10 filings · Most complete single-framework submission in 319 entries
+```
+
+---
+
+## Related Repos
+
+| Repo | Gap closed |
+|------|-----------|
+| [iba-platform-guard](https://github.com/Grokipaedia/iba-platform-guard) | Every managed agent platform. The harness is not the gate. |
+| [iba-conference-guard](https://github.com/Grokipaedia/iba-conference-guard) | The agent found the talk. Did anyone authorize the extraction? |
+| [glasswing-iba-guard](https://github.com/Grokipaedia/glasswing-iba-guard) | Govern the patch. Not just find the bug. |
+| [iba-code-guard](https://github.com/Grokipaedia/iba-code-guard) | They got the commit. They didn't get the cert. |
+
+---
+
+## Acquisition Enquiries
+
+IBA Intent Bound Authorization is available for acquisition.
+
+**Jeffrey Williams**
+IBA@intentbound.com
+IntentBound.com
+Patent GB2603013.0 Pending · IETF draft-williams-intent-token-00
